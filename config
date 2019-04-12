@@ -204,9 +204,10 @@ exec --no-startup-id nm-applet
 
 # Pulse Audio controls
 exec --no-startup-id pulseaudio
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master 0% # mute sound
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -215,4 +216,3 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 bindsym Control+$mod+s exec scrot /tmp/screenshot.png
 exec --no-startup-id dunst # Start notification daemon
 exec --no-startup-id notify-send "Welcome back Apptica!" -i ~/.images/happy.png # Greeting on startup
-
