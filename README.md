@@ -1,4 +1,7 @@
 # i3config
+
+All credit goes to : https://github.com/da-edra/dotfiles
+
 This is my i3 window manager settings that I use. 
 
 1) Clone the repository and copy its contents to a .i3 folder in your home directory
