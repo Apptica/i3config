@@ -1,4 +1,4 @@
 i3wm
 i3blocks
 arandr or xrandr
-pulseaudio
+amixer
