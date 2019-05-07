@@ -93,11 +93,11 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Name the workspaces
-set $tag1 "1: browser"
-set $tag2 "2: code"
-set $tag3 "3: hightail"
-set $tag4 "4: terminal"
-set $tag5 "5: files"
+set $tag1 "1: browser "
+set $tag2 "2: code "
+set $tag3 "3: hightail "
+set $tag4 "4: terminal "
+set $tag5 "5: files "
 
 # switch to workspace
 bindsym $mod+1 workspace $tag1
@@ -112,13 +112,13 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 #open apps in specific workspace
+assign [class="Google-chrome"] $tag1
 assign [class="Firefox"] $tag1
-assign [class="Chromium-browser"] $tag1
 assign [class="Code"] $tag2
-
-assign [class="Tilix"] $tag4
-assign [class="Nautilus"] $tag5
-
+assign [class="org-hightail-ui-MainJFrame"] $tag3
+assign [class="qterminal"] $tag4
+assign [class="pcmanfm-qt"] $tag5
+assign [class="Slimjet"] $tag1
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $tag1
@@ -192,19 +192,24 @@ bar {
 	}
 	# i3bar position
 	position top
-	font pango: SauceCodePro Nerd Font Black 10
-
+	#font pango: SauceCodePro Nerd,FontAwesome Font Black 10
+	font pango: FontAwesome, SauceCodePro Nerd Font Black 10
 	# Using custom i3status.conf
-	status_command i3blocks -c ~/.i3/i3blocks.conf
+	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 }
 
 # i3lock shortcut
 bindsym Control+$mod+l exec sh ~/.config/i3/i3lock.sh
+
+#load the network applet
 exec --no-startup-id nm-applet
+
+#Convert screen to only monitor
+exec --no-startup-id xrandr --output eDP-1 --rate 60 --mode 1366x768 --fb 1920x1080 --panning 1920x1080* --output HDMI-1 --mode 1920x1080 --same-as eDP-1
 
 # Pulse Audio controls
 exec --no-startup-id pulseaudio
-
+ 
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master 0% # mute sound
